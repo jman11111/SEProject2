@@ -3,7 +3,17 @@ const app = express()
 const port = 3000
 
 app.get('/', (request, response) => {
-  response.send('Hello from Express!')
+    response.send('Hello from Express!')
+})
+
+app.get('/dev', (request, response) => {
+    response.send('You are on /dev')
+})
+
+app.get('/json', (request, response) => {
+  response.send(JSON.stringify({
+    hehe: "jsontest"
+  }));
 })
 
 app.listen(port, (err) => {
