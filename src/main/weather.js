@@ -24,7 +24,7 @@ var request = new OAuth.OAuth(
 function getWeather(location){
     var data = getData(location);
     //return parseData(data);
-};
+}
 
 
 function getData(location){ //Location is the input
@@ -43,12 +43,12 @@ function getData(location){ //Location is the input
         }
     );
     return output;
-};
+}
 
 /*
 function parseData(data){
 
 
     return output;
-};
+}
 */
