@@ -20,15 +20,35 @@ var request = new OAuth.OAuth(
     null,
     header
 );
-request.get(
-    'https://weather-ydn-yql.media.yahoo.com/forecastrss?location=sunnyvale,ca&format=json',
-    null,
-    null,
-    function (err, data, result) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(data)
+
+function getWeather(location){
+    var data = getData(location);
+    //return parseData(data);
+};
+
+
+function getData(location){ //Location is the input
+    var output;
+    request.get(
+        'https://weather-ydn-yql.media.yahoo.com/forecastrss?location='+location+'&format=json',//do I need to make this string conform better
+        null,
+        null,
+        function (err, data, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                output = data;
+                //console.log(data) could also just output to console
+            }
         }
-    }
-);
+    );
+    return output;
+};
+
+/*
+function parseData(data){
+
+
+    return output;
+};
+*/
