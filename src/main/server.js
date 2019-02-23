@@ -10,8 +10,18 @@ var error = function (err, response, body) {
 var success = function (data) {
   console.log('Data [%s]', data);
 };
-    
-var twitter = new Twitter();
+
+var config = {
+  consumerKey: 'YGfbBkpdB3LzsDbOQq34I8bOK',
+  consumerSecret: 'FhRgGKY5oWX2CDJ3JrsLkdmIofE3BgsSMugNllZAeBiCt5lAqJ',
+  accessToken: "1097228851397173248-5HLGeymTaxe7VtoCDq6GhSGnHDiSQf",
+  accessTokenSecret: "fMpt9u8chF4OdjV8vlgp1gP2CcFKM02HHVXiTsMIF4C2n",
+  callBackUrl: "http://localhost:3000"
+}
+
+var twitter = new Twitter(config);
+
+twitter.getSearch({'q':'#haiku','count': 10}, error, success);
 
 app.get('/', function (req, res) {
   axios.get('https://api.github.com/users/jman11111/repos', {
