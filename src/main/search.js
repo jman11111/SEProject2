@@ -16,7 +16,7 @@ requestify.get('https://stream.twitter.com/1.1/statuses/filter.json').then(funct
   response.getBody();
 //get request https://stream.twitter.com/1.1/statuses/filter.json
 
-twitter.stream('filter',{track: 'love'}, function(stream){
+twitter.stream('statuses/filter',{track: 'love'}, function(stream){
 
     stream.on('data',function(data){
         console.log(util.inspect(data));
