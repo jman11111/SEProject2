@@ -7,13 +7,13 @@
 
 var OAuth = require('oauth');
 var header = {
-    "Yahoo-App-Id": "your-app-id"
+    "Yahoo-App-Id": "9DNtWM4e"
 };
 var request = new OAuth.OAuth(
     null,
     null,
-    'your-consumer-key',
-    'your-consumer-secret',
+    'dj0yJmk9RkVhUE1DSWw5RVMyJnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTcy',
+    'a0fe2b1bea9e9515f811bddd3cb3ff7a4cd13878',
     '1.0',
     null,
     'HMAC-SHA1',
@@ -21,14 +21,10 @@ var request = new OAuth.OAuth(
     header
 );
 
-function getWeather(location){
-    var data = getData(location);
-    //return parseData(data);
-}
+var location = 'chicago';
 
+var output;
 
-function getData(location){ //Location is the input
-    var output;
     request.get(
         'https://weather-ydn-yql.media.yahoo.com/forecastrss?location='+location+'&format=json',//do I need to make this string conform better
         null,
@@ -37,18 +33,8 @@ function getData(location){ //Location is the input
             if (err) {
                 console.log(err);
             } else {
-                output = data;
-                //console.log(data) could also just output to console
+                //output = data;
+                console.log(data);
             }
         }
     );
-    return output;
-}
-
-/*
-function parseData(data){
-
-
-    return output;
-}
-*/
