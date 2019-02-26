@@ -8,7 +8,7 @@ var error = function (err, response, body) {
   console.log('ERROR [%s]', err);
 };
 var success =  async function (data) {
-  return tweetdata = data;
+  tweetdata = data;
 };
 
 var config = {
@@ -22,8 +22,11 @@ var config = {
 var twitter = new Twitter(config);
 
 app.get('/', async function (req, res) {
-     await twitter.getSearch({'q':'#love','count': 10}, error, success);
+    twitter.getSearch({'q':'#love','count': 10}, error, success);
+    var func = function(){
       res.send(tweetdata);
+    }
+    setTimeout(func,1000);
 })
 
 app.listen(port, (err) => {
