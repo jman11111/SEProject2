@@ -4,6 +4,12 @@ const port = 3000
 const axios = require('axios')
 var Twitter = require('twitter-node-client').Twitter;
 var tweetdata;
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
 var error = function (err, response, body) {
   console.log('ERROR [%s]', err);
 };
@@ -21,12 +27,20 @@ var config = {
 
 var twitter = new Twitter(config);
 
-app.get('/', async function (req, res) {
-    twitter.getSearch({'q':'#love','count': 10}, error, success);
+app.post('/', async function (req, res) {
+    twitter.getSearch({'q':req.body.tweet,'count': 10}, error, success);
     var func = function(){
       res.send(tweetdata);
     }
     setTimeout(func,1000);
+})
+
+app.get('/', async function (req, res) {
+  twitter.getSearch({'q':'#love','count': 10}, error, success);
+  var func = function(){
+    res.send(tweetdata);
+  }
+  setTimeout(func,1000);
 })
 
 app.listen(port, (err) => {
