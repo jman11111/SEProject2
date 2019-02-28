@@ -8,6 +8,27 @@ import WeatherBox from './components/WeatherBox';
 import axios from 'axios';
 
 class App extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            simTweets: [],
+        };
+    }
+
+    getSimilarTweets() {
+        let uri = 'https://localhost:3001/twitter';
+        axios.post(uri)
+          .then((response) => {
+            this.setState({weather: response.data.current_observation.condition.text});
+            console.log(response.data.current_observation.condition.text);
+          })
+          .catch((error) => {
+            console.log('Similar Tweets fetch failed');
+            console.log(error);
+          });
+      }
+
     render() {
         return (
             <div className="App">
@@ -15,24 +36,11 @@ class App extends Component {
                 <WeatherBox />
                 <div className="Centered-Container">
                     <SearchBorder headerTitle={'Search'} fontSize={100}>
-                        <p>
-                            {/* use this form instead of the CheckBox component; looks nicer */}
-                            <form action="/submit-tweet">
-                                <label for="Topics"><input id="Topics" type="checkbox" name="Tweet Filters" /> Topics</label>
-                                <label for="Mentions"><input id="Mentions" type="checkbox" name="Tweet Filters" /> Mentions</label>
-                                <label for="URL"><input id="URL" type="checkbox" name="Tweet Filters" /> URL</label>
-                            </form>
-                            <TextBox />
-                            <form>
-                                <button type="submit" style={{fontSize: 30}}>Submit</button>
-                            </form>
-                        </p>
+                        <CheckBox />
+                        <TextBox />
                     </SearchBorder>
                     <SearchBorder headerTitle={'Results'}>
-                        <p>
-                            <ListBox />
-                        </p>
-                        
+                        <ListBox simTweets={this.state.simTweets}/>
                     </SearchBorder>
                 </div>
             </div>

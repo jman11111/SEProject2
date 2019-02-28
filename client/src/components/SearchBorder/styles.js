@@ -18,8 +18,9 @@ const styles = {
         backgroundColor: 'white',
         flex: 6,
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems:  'flex-start',
+        alignItems:  'center',
         fontSize: 20
     }
 }
