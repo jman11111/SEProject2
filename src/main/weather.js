@@ -15,8 +15,12 @@ var header = {
     "Yahoo-App-Id": "9DNtWM4e"
 };
 
+app.get('/', function (req, res) {
+
+});
+
 app.post('/weather', function (req, res) {
-    var location =req.body.loc; //from front end version
+    var location =req.body.location; //from front end version
     //var location = 'loc'; //manual version
 
     var request = new OAuth.OAuth(
@@ -31,7 +35,7 @@ app.post('/weather', function (req, res) {
         header
     );
 
-    var output;
+    //var output;
 
     request.get(
         'https://weather-ydn-yql.media.yahoo.com/forecastrss?location=' + location + '&format=json',
@@ -41,8 +45,8 @@ app.post('/weather', function (req, res) {
             if (err) {
                 console.log(err);
             } else {
-                //output = data;
-                console.log(data);
+                res.send(data)
+                //console.log(data);
             }
         });
-})
+});
