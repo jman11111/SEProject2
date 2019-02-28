@@ -1,58 +1,46 @@
-const express = require('express')
+                                                                              const express = require('express')
 const app = express()
 const port = 3000
-const https = require('https');
+const axios = require('axios')
+var Twitter = require('twitter-node-client').Twitter;
+var tweetdata;
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
-let data = '';
-
-var options = {
-  host: "developer.api.autodesk.com",
-  path: "/oss/v1/buckets",
-  method: "POST",
-  headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer token"
-  }
+var error = function (err, response, body) {
+  console.log('ERROR [%s]', err);
+};
+var success =  async function (data) {
+  tweetdata = data;
 };
 
-/*var post_options = {
-  host: 'api.github.com',
-  path: '/jman11111/repos',
-  port: '8000',
-  method: 'POST',
-  headers: {
-    'User-Agent': 'jman11111'
+var config = {
+  consumerKey: 'YGfbBkpdB3LzsDbOQq34I8bOK',
+  consumerSecret: 'FhRgGKY5oWX2CDJ3JrsLkdmIofE3BgsSMugNllZAeBiCt5lAqJ',
+  accessToken: "1097228851397173248-5HLGeymTaxe7VtoCDq6GhSGnHDiSQf",
+  accessTokenSecret: "fMpt9u8chF4OdjV8vlgp1gP2CcFKM02HHVXiTsMIF4C2n",
+  callBackUrl: "http://localhost:3000"
+}
+
+var twitter = new Twitter(config);
+
+app.post('/', async function (req, res) {
+    twitter.getSearch({'q':req.body.tweet,'count': 10}, error, success);
+    var func = function(){
+      res.send(tweetdata);
+    }
+    setTimeout(func,1000);
+})
+
+app.get('/', async function (req, res) {
+  twitter.getSearch({'q':'#love','count': 10}, error, success);
+  var func = function(){
+    res.send(tweetdata);
   }
-}*/
-app.get('/', (request, response) => {
-  
-
-  https.request(options, (resp) => {
-  
-    // A chunk of data has been recieved.
-    resp.on('data', (chunk) => {
-      data += chunk;
-    });
-
-    // The whole response has been received. Print out the result.
-    resp.on('end', () => {
-      console.log('data sent');
-      response.send(data)
-      data = '';
-    });
-
-  }).on("error", (err) => {
-  console.log("Error: " + err.message);
-  });
-  
-})
-
-app.get('/dev', (request, response) => {
-    response.send('You are on /dev')
-})
-
-app.get('/json', (request, response) => {
-  response.send()
+  setTimeout(func,1000);
 })
 
 app.listen(port, (err) => {

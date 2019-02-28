@@ -1,19 +1,26 @@
-const https = require('http');
+const axios = require('axios');
 
-https.get('http://67.173.130.214:3000', (resp) => {
-  let data = '';
+const testresponse = () => {
+  try {
+    return axios.post('http://localhost:3000', {
+      tweet: '#yeet'
+      } 
+    )
+  } catch (error) {
+    console.error(error)
+  }
+}
 
-  // A chunk of data has been recieved.
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
+const sendPOST = async () => {
+  const response = testresponse()
+    .then(response => {
+      if (response.data) {
+        console.log('Recieved' + JSON.stringify(response.data.statuses[0].text));
+      }
+    })
+    .catch(error => {
+      console.log(error)
+    })
+}
 
-  // The whole response has been received. Print out the result.
-  resp.on('end', () => {
-    console.log('recieved:');
-    console.log(data);
-  });
-
-}).on("error", (err) => {
-    console.log("Error: " + err.message);
-});
+sendPOST()
