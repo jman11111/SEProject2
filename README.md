@@ -33,3 +33,5 @@ not sure yet
 ## Authors
 
 * **Jack Broncato** - *Back-end node Dev* - [jman11111](https://github.com/jman11111)
+
+* **Jean-Luc Putter** - *Back-end API Dev with node* 
