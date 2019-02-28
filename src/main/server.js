@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3001
 const axios = require('axios')
 var Twitter = require('twitter-node-client').Twitter;
 var tweetdata;
