@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const testresponse = () => {
     try {
-        return axios.post('http://localhost:3001/weather', {
+        return axios.post('http://localhost:3000/weather', {
                 location: 'Chi'
             }
         )
