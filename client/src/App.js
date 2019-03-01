@@ -20,8 +20,8 @@ class App extends Component {
         let uri = 'https://localhost:3001/twitter';
         axios.post(uri)
           .then((response) => {
-            this.setState({weather: response.data.current_observation.condition.text});
-            console.log(response.data.current_observation.condition.text);
+            this.setState({simTweets: response.data.statuses});
+            console.log(response.data.statuses[0].text);
           })
           .catch((error) => {
             console.log('Similar Tweets fetch failed');
