@@ -1,6 +1,6 @@
 # SEProject2
 
-We built a React.js application along with a Node.js backend server to provide the react frontend with data. 
+We built a React.js application along with a Node.js backend server to provide the react frontend with data. This project is not finished.
 
 
 ## Functionality
