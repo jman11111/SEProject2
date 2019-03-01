@@ -37,7 +37,7 @@ class App extends Component {
                 <div className="Centered-Container">
                     <SearchBorder headerTitle={'Search'} fontSize={100}>
                         <CheckBox />
-                        <TextBox />
+                        <TextBox onSubmit={this.getSimilarTweets}/>
                     </SearchBorder>
                     <SearchBorder headerTitle={'Results'}>
                         <ListBox simTweets={this.state.simTweets}/>
