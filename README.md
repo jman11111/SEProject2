@@ -1,26 +1,23 @@
 # SEProject2
 
-We built a frontend and backend to support the searching of similar tweets to the one put in to the front end
-
-## Getting Started
-
-Not sure of this yet
+We built a React.js application along with a Node.js backend server to provide the react frontend with data. 
 
 
 ## Functionality
 
-GUI: Sophie working in react to make a webapp like frontend, unknown if it will be a web app or not, or just local hosting.
+GUI: Sophie (The Savior) working in react to make a locally hosted webapp like frontend 
 
-Twitter Search API: Jean luc getting tokens, working in node to help
+Twitter Search API: Jack Broncato and Jean-Luc provided twitter backend API calls for the frontend
 
-Weather API: Jack Naworski getting Weather data when fed a location
+Weather API: Jack Naworski provided backend weather data when fed a location
 
-Design Pattern: Observer, to check for when requests are received from frontend, so corresponding data can be sent from backend. Jack Broncato is to do backend in node and have the two API’s interact with it.
+Design Pattern: Observer, the server observes for requests and responds when they are recieved. (Jack B.)
 
 
 ### Installing
 
-not sure yet
+- Yarn: make sure to install Yarn so that you are able to get the dependencies to run the program.
+    - 
 
 ## Running the tests
 
