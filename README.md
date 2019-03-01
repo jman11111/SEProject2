@@ -1,37 +1,50 @@
 # SEProject2
 
-We built a frontend and backend to support the searching of similar tweets to the one put in to the front end
-
-## Getting Started
-
-Not sure of this yet
+We built a React.js application along with a Node.js backend server to provide the react frontend with data. 
 
 
 ## Functionality
 
-GUI: Sophie working in react to make a webapp like frontend, unknown if it will be a web app or not, or just local hosting.
+GUI: Sophie (The Savior) working in react to make a locally hosted webapp like frontend 
 
-Twitter Search API: Jean luc getting tokens, working in node to help
+Twitter Search API: Main logic for the search API is in server.js, includes authorization for both Yahoo Weather and Twitter (please don't steal credentials). Jack Broncato and Jean-Luc provided twitter backend API calls for the frontend
 
-Weather API: Jack Naworski getting Weather data when fed a location
+Weather API: Jack Naworski provided backend weather data when fed a location
 
-Design Pattern: Observer, to check for when requests are received from frontend, so corresponding data can be sent from backend. Jack Broncato is to do backend in node and have the two API’s interact with it.
+Design Pattern: Observer, the server observes for requests and responds when they are recieved. (Jack B.)
 
 
 ### Installing
 
-not sure yet
+- Yarn: make sure to install Yarn so that you are able to get the dependencies to run the program.
+    - Follow this link to install yarn https://yarnpkg.com/lang/en/docs/install/#debian-stable
+    - To build and run the frontend enter this in command: ```yarn install && cd client && yarn install && cd ..```
+    - Then run yarn with the command while in the client folder: ```yarn build```
+    - Then: ```yarn start```
+    
 
 ## Running the tests
 
-not sure yet
+- For testing the backend APIs run server.js in src/main. Use ```node server.js``` which should tell you the server is listening, if running correctly. 
+
+- While server.js is running, on a seperate terminal, run ``` node requesttest.js``` or ```node weathertest.js``` depending on which you would like to test. 
+
 
 ## Built With/Requirements
 
-not sure yet
+- Yarn
+- Express
+- Twitter-node-client
+- Axios
+- Various other modules (in the code already)
+
 
 ## Authors
 
 * **Jack Broncato** - *Back-end node Dev* - [jman11111](https://github.com/jman11111)
 
 * **Jean-Luc Putter** - *Back-end API Dev with node* 
+
+* **Sophie Von Hatten** - *Solo Front-end Dev* - [svonhatten](https://github.com/svonhatten)
+
+* **Jack Narwoski** - *Back-end node Dev*
